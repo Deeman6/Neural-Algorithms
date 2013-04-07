@@ -43,7 +43,7 @@ public class SOMIris {
 		 *  5th part of data-set is classification number
 		 */
 		
-		double[][] irisdata = new IrisData().getDataArray(4);
+		double[][] irisdata = new IrisData().getDataArray("full",4);
 		
 		MLDataSet training = new BasicMLDataSet(irisdata,null);
 		

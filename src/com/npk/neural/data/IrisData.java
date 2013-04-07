@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class IrisData {
 
 	private static final String IRIS = "dataset/iris.data";
+	private static final String TEST = "dataset/test.data";
 	
 	private BufferedReader reader;
 	private double[][] dataArray;
@@ -55,10 +56,39 @@ public class IrisData {
 		
 	}
 	
-	public double[][] getDataArray(int index){
-		ArrayList<String> alist = readFile(IRIS, index);
+	public double[][] getDataArray(String type, int index){
+		ArrayList<String> alist;
+		
+		if (type.equalsIgnoreCase("full")){
+			alist = readFile(IRIS, index);
+		}else{
+			alist = readFile(TEST, index);
+		}
 		rows = alist.size() / index;
 		columns = index;
+		dataArray = new double[rows][columns];
+		
+		for (int i=0;i<rows;i++){
+			for (int j=0;j<columns;j++){
+				dataArray[i][j] = Double.parseDouble(alist.get(i*columns + j));
+			}
+		}
+		
+		return dataArray;
+	}
+	
+	public double[][] getDataArray(String type){
+		
+		ArrayList<String> alist;
+		
+		if (type.equalsIgnoreCase("full")){
+			alist = readFile(IRIS, 5);
+		}else{
+			alist = readFile(TEST, 5);
+		}
+		
+		rows = alist.size() / 5;
+		columns = 5;
 		dataArray = new double[rows][columns];
 		
 		for (int i=0;i<rows;i++){
