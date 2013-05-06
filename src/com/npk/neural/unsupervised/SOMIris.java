@@ -10,6 +10,9 @@
 
 package com.npk.neural.unsupervised;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.encog.Encog;
 import org.encog.ml.data.MLData;
 import org.encog.ml.data.MLDataSet;
@@ -104,6 +107,14 @@ public class SOMIris {
 		
 		System.out.println("Pattern 1 winner: " + network.classify(data1));
 		System.out.println("Pattern 2 winner: " + network.classify(data2));
+		
+		Map<String,String> map = network.getProperties();
+		
+		System.out.println(network.getWeights());
+		for (String s: map.keySet()){
+			System.out.println(s + " " +map.get(s));
+		}
+		
 		Encog.getInstance().shutdown();
 		
 		
