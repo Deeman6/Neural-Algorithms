@@ -19,7 +19,7 @@ public class MLKMeans {
          * KMeans(int clusters, int iterations, DistanceMeasure dm)
          * Create a new K-means clusterer with the given number of clusters and iterations.
          */
-        Clusterer km = new KMeans(5,100, new NormalizedEuclideanSimilarity(data));
+        Clusterer km = new KMeans(10,1000, new NormalizedEuclideanSimilarity(data));
         Dataset[] clusters = km.cluster(data);
         
         System.out.println("Cluster count: " + clusters.length);
